@@ -1,6 +1,7 @@
 package com.okka.rest.services.restservices.api;
 
 import com.okka.rest.services.restservices.model.Student;
+import com.okka.rest.services.restservices.service.UserJPAService;
 import com.okka.rest.services.restservices.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,11 +12,12 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
+@RequestMapping("jpa")
 @RestController
-public class UserController {
+public class UserJPAController {
 
     @Autowired
-    private UserService userService;
+    private UserJPAService userService;
 
     @GetMapping("/users")
     public List<Student> getAllUsers(){
