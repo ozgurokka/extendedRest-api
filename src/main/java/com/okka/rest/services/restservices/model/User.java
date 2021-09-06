@@ -1,10 +1,14 @@
 package com.okka.rest.services.restservices.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.validation.constraints.Size;
 
 public class User {
 
+    @JsonIgnore
     private String id;
+
     @Size(min = 2, message = "İsim min 2 karakter olmalıdır.")
     private String name;
     private String surname;
