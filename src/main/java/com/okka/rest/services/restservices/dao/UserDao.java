@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * Created by ozgurokka on 9/6/21 4:55 PM
  */
-public interface UserDao extends CrudRepository<Student,String> {
+public interface UserDao extends CrudRepository<Student,Integer> {
 }

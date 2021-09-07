@@ -15,9 +15,9 @@ public class UserService {
 
     private static List<Student> userList = new ArrayList<>();
 
-    private static Student u1 = new Student("1","özgür","okka");
-    private static Student u2 = new Student("2","özlem","okka");
-    private static Student u3 = new Student("3","fatma","okka");
+    private static Student u1 = new Student(1,"özgür","okka");
+    private static Student u2 = new Student(2,"özlem","okka");
+    private static Student u3 = new Student(3,"fatma","okka");
 
     static {
         userList.add(u1);userList.add(u2);userList.add(u3);
@@ -26,18 +26,15 @@ public class UserService {
     public List<Student> getAllUser(){
         return  userList;
     }
-    public Student getUser(String id){
+    public Student getUser(int id){
         for (Student u: userList) {
-            if(u.getId().equals(id))
+            if(u.getId()== id)
                 return  u;
         }
-        throw new UserNotFoundException(id);
+        throw new UserNotFoundException(id+"");
     }
 
     public Student save(Student user) {
-        if (user.getId() == null) {
-            user.setId(userList.size()+1+"");
-        }
         userList.add(user);
         return user;
     }

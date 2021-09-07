@@ -5,21 +5,27 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Student {
 
     @Id
-    private String id;
+    @GeneratedValue
+    private int id;
 
     @Size(min = 2, message = "İsim min 2 karakter olmalıdır.")
     private String name;
 
     private String surname;
 
-    public Student(String id, String name, String surname) {
+    @OneToMany(mappedBy = "student")
+    private List<Note> notes;
+
+    public Student(int id, String name, String surname) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -27,11 +33,11 @@ public class Student {
 
     public Student(){}
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -49,5 +55,13 @@ public class Student {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
     }
 }

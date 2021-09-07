@@ -23,11 +23,11 @@ public class UserJPAService {
         return (List<Student>) dao.findAll();
     }
 
-    public Student getUser(String id){
+    public Student getUser(int id){
         Optional<Student> a = dao.findById(id);
         if(a.isPresent())
             return a.get();
-        throw new UserNotFoundException(id);
+        throw new UserNotFoundException(id+"");
     }
 
     public Student save(Student user) {
